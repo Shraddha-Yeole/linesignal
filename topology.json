@@ -1,0 +1,23 @@
+{
+  "nodes": [
+    {"id": "robot-a12", "name": "Robot A12", "kind": "Robot"},
+    {"id": "robot-a14", "name": "Robot A14", "kind": "Robot"},
+    {"id": "ap-07", "name": "Access Point AP-07", "kind": "AccessPoint"},
+    {"id": "ap-08", "name": "Access Point AP-08", "kind": "AccessPoint"},
+    {"id": "sw-04", "name": "Switch SW-04", "kind": "Switch"},
+    {"id": "dispatch-api", "name": "Dispatch API", "kind": "Service"},
+    {"id": "plc-4", "name": "Line 4 PLC", "kind": "Controller"},
+    {"id": "line-4", "name": "Line 4", "kind": "ProductionLine"}
+  ],
+  "edges": [
+    {"from": "robot-a12", "to": "ap-07", "rel": "CONNECTS_THROUGH"},
+    {"from": "robot-a12", "to": "ap-08", "rel": "CAN_ROAM_TO"},
+    {"from": "robot-a14", "to": "ap-08", "rel": "CONNECTS_THROUGH"},
+    {"from": "ap-07", "to": "sw-04", "rel": "UPLINKS_TO"},
+    {"from": "ap-08", "to": "sw-04", "rel": "UPLINKS_TO"},
+    {"from": "sw-04", "to": "dispatch-api", "rel": "REACHES"},
+    {"from": "sw-04", "to": "plc-4", "rel": "REACHES"},
+    {"from": "dispatch-api", "to": "line-4", "rel": "DISPATCHES_TO"},
+    {"from": "plc-4", "to": "line-4", "rel": "CONTROLS"}
+  ]
+}
